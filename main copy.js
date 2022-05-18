@@ -1,7 +1,6 @@
 function $(id) {
     return document.getElementById(id);
 }
-
 function textToImg() {
     var len = $('len').value || 30;
     var i = 0;
@@ -17,13 +16,11 @@ function textToImg() {
         alert('Type something');
         $("txt").focus();
     }
-
     if (len > txt.length) {
         len = txt.length;
     }
-
-    canvas.width = fontSize * len/5;
-    canvas.height = fontSize * (3 / 2) * (Math.ceil(txt.length / len)) + txt.split("\n").length * fontSize ;
+    canvas.width = fontSize * len + 20;
+    canvas.height = fontSize * (3 / 2) * (Math.ceil(txt.length / len)) + txt.split("\n").length * fontSize;
     var context = canvas.getContext('2d');
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillStyle = $("backcolor").innerHTML;
@@ -33,19 +30,18 @@ function textToImg() {
 
     n = txt.length / 5;
     n2 = txt.length * fontSize * points;
-
-    for (i = 0; i < n2; i++) {
+    for (var i = 0; i < n2; i++) {
         x = random(0, canvas.width);
         y = random(0, canvas.height);
         context.lineWidth = pointSize;
         context.beginPath();
         context.moveTo(x, y);
-        context.lineTo(x + 1, y + 1); //randomize grains
+        context.lineTo(x + 1, y + 1); //隨機畫點
         context.closePath();
         context.stroke();
     }
-
-    for (i = 0; i < n; i++) {
+    i = 0;
+    for (var i = 0; i < n; i++) {
         x = random(0, canvas.width);
         y = random(0, canvas.height);
         context.lineWidth = lineSize;
@@ -55,30 +51,33 @@ function textToImg() {
         context.closePath();
         context.stroke();
     }
+    i = 0;
 
-    context.font = fontWeight + ' ' + fontSize + 'px Asfalt' ;
+    context.font = fontWeight + ' ' + fontSize + 'px sans-serif';
     context.textBaseline = 'top';
     canvas.style.display = 'none';
 
-    // Regular expression for nearest space
-    // Split string at nearest space to specific char length.
-    // 30 in this case
-    // var textlen = document.getElementById("len").value;
-
-    var str = txt;
-    var txtArray = str.replace(/.{30}\S*\s+/g, "$&@").split(/\s+@/);
-
-    for (i = 0; i < txtArray.length; i++) {
-        var r = random( - 1, 1) / random(50, 100);
-        context.rotate(r);
-        context.fillText(txtArray[i], len*2, fontSize * i +fontSize/2, canvas.width);
+    function fillTxt(text) {
+        while (text.length > len) {
+            var txtLine = text.substring(0, len);
+            text = text.substring(len);
+            var r = random( - 1, 1) / random(50, 100);
+            context.rotate(r); //隨機旋轉每一行文字
+            
+            context.fillText(txtLine, 10, 5 + fontSize * (3 / 2) * i++, canvas.width);
+            context.rotate(r * -2);
+        }
+        context.fillText(text, 0, fontSize * (3 / 2) * i, canvas.width);
     }
-
+    var txtArray = txt.split("\n");
+    for (var j = 0; j < txtArray.length; j++) {
+        fillTxt(txtArray[j]);
+        context.fillText('\n', 0, fontSize * (3 / 2) * i++, canvas.width);
+    }
     var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     var img = $("img");
     img.src = canvas.toDataURL("image/png");
 }
-
 function changeColor(name) {
     var c = $(name + "_c");
     var ctx = c.getContext("2d");
@@ -90,7 +89,6 @@ function changeColor(name) {
     ctx.fillRect(0, 0, 100, 100);
     $('canvas').getContext('2d').fillStyle=$("fontcolor").innerHTML;
 }
-
 function random(min, max) {
     return Math.round(Math.random() * (max - min)) + min;
 }

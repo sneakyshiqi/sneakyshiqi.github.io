@@ -1,0 +1,168 @@
+@font-face {
+	font-family: DiatypeMono;
+	src: url(ABCDiatypeMonoVariableEdu.woff);
+}
+@font-face{
+	font-family: Asfalt;
+	src: url(ABCAsfaltEdu-Regular.woff);
+}
+
+html,button{
+	font-family: DiatypeMono;
+	font-size: 12px;
+	background-color: black;
+}
+
+body{
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 5%;
+
+}
+
+textarea,h1{
+	font-family:Asfalt;
+	font-weight: 100;
+}
+
+textarea, #canvas{
+	font-size: 10rem;
+	line-height: 10rem;
+	padding: 2rem;
+}
+.txt{
+	float: left;
+}
+textarea{
+	background-color: black;
+	color: white;
+	border: 1px solid white;
+	width: 100%;
+	height: 50%;
+	border-radius: 1rem;
+	resize: none;
+}
+
+h1,h2{
+	text-align: center;
+}
+
+h1{
+	font-size: 15rem;
+	line-height: 5rem;
+	color: white;
+	bottom: 0;
+}
+h2{
+	font-size: 2rem;
+	text-transform: uppercase;
+}
+.h1{
+	margin-bottom: 0px;
+	height: 5rem;
+
+}
+.h2{
+	background-color: rgb(0, 255, 0);
+	border-radius: 2rem;
+
+}
+
+tbody{
+	color: white;
+	font-size: 1.5rem;
+}
+
+table{
+	margin-left: 2rem;
+	float: left;
+}
+td{
+	border-top: 2px solid white;
+	padding-top: .5rem;
+}
+
+#sliders{
+	padding-left: 1rem;
+}
+p{
+	margin: 0;
+}
+input[type="range"] {
+	-webkit-appearance: none;
+	border-radius: 2rem;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+	background: black;
+	border-radius: 2rem;
+	border: 1px solid white;
+	margin: 0;
+	padding: 0;
+}
+
+input[type="range"]::-moz-range-track {
+	background: black;
+	border-radius: 2rem;
+	border: 1px solid white;
+	margin: 0;
+	padding: 0;
+}
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	height: 1.5rem;
+	width: 1.5rem;
+	background: black;
+	border: 1px solid white;
+	border-radius: 2rem;
+	background: rgb(0, 255, 255);
+}
+
+input[type="range"]::-moz-range-thumb {
+	height: 1.5rem;
+	width: 1.5rem;
+	background: rgb(0, 255, 255);
+	border: 1px solid white;
+	border-radius: 2rem;
+}
+input[type=text], select {
+	width: auto;
+	font-family: DiatypeMono;
+	font-size: 1.5rem;
+	color: white;
+	background-color: rgb(255, 0, 0);
+	border: 1px solid white;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	border-radius: 2rem;
+}
+button{
+	background-color: rgb(0, 0, 255);
+	border: none;
+	color: white;
+	padding: 1.5rem;
+	font-size: 3rem;
+	border-radius: 5rem;
+	margin-top: 1rem;
+	text-decoration: none;
+	cursor: pointer;
+}
+textarea::-webkit-scrollbar {
+  width: 2rem;
+  border-radius: 2rem;
+}
+ 
+textarea::-webkit-scrollbar-track {
+	background-color: white;
+	border-radius: 2rem;
+  	border: 1px solid black;
+}
+ 
+textarea::-webkit-scrollbar-thumb {
+  background-color: black;
+   border: 1px solid white;
+  border-radius: 2rem;
+}
+.parameters{
+	margin-right: 1rem;
+}
